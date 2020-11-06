@@ -1,8 +1,8 @@
 <?php
-$server = "localhost";
+$server = "http://142.44.247.98/";
 $user = "root";
 $pass = ""; 
-$db= "internacionalizate_db";
+$db= "neuro_hogar";
 
 $conexion = mysqli_connect($server, $user, $pass,$db);	
 
