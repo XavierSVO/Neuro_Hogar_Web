@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2020 a las 16:17:08
+-- Tiempo de generación: 18-11-2020 a las 23:48:54
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -33,6 +33,18 @@ CREATE TABLE accion (
   accion varchar(30) DEFAULT NULL,
   fecha datetime DEFAULT NULL,
   pagina varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla datos
+--
+
+CREATE TABLE datos (
+  datos varchar(30) DEFAULT NULL,
+  fecha date DEFAULT NULL,
+  id_sensor_datos int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -137,6 +149,12 @@ ALTER TABLE accion
   ADD KEY id_usuario (id_usuario);
 
 --
+-- Indices de la tabla datos
+--
+ALTER TABLE datos
+  ADD KEY id_sensor_datos (id_sensor_datos);
+
+--
 -- Indices de la tabla dispositivo
 --
 ALTER TABLE dispositivo
@@ -226,6 +244,12 @@ ALTER TABLE usuario
 --
 ALTER TABLE accion
   ADD CONSTRAINT accion_ibfk_1 FOREIGN KEY (id_usuario) REFERENCES usuario (id);
+
+--
+-- Filtros para la tabla datos
+--
+ALTER TABLE datos
+  ADD CONSTRAINT datos_ibfk_1 FOREIGN KEY (id_sensor_datos) REFERENCES sensor (id_sensor);
 
 --
 -- Filtros para la tabla dispositivo
