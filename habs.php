@@ -12,11 +12,21 @@ $serie="";
 $user_id = $_SESSION['user_id'];
 
 //momento de conectarnos a db
-$conn = mysqli_connect("localhost","admin_cursoiot","121212","admin_cursoiot");
+define('DB_NAME', 'chuturubi');
+define('DB_USER', 'chuturubi');
+define('DB_PASSWORD', 'm@squiTt-m@sc@IOTchuturubi1923');
+define('DB_HOST', 'localhost');
 
-if ($conn==false){
-  echo "Hubo un problema al conectarse a María DB";
-  die();
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
+
+if (!$conn) {
+    die('Could not connect: ' . mysqli_error($conn));
+}
+
+$db_selected = mysqli_select_db($conn, DB_NAME);
+
+if (!$db_selected) {
+    die('Cannot access' . DB_NAME . ': ' . mysqli_error($conn));
 }
 
 if( isset($_POST['id_to_delete']) && $_POST['id_to_delete']!="") {

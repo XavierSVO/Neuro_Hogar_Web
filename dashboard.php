@@ -8,13 +8,22 @@ if(!$logged){
 }
 
 $devices = $_SESSION['devices'];
-try{
-//momento de conectarnos a db
-$conn = mysqli_connect("localhost","chuturubi","m@squiTt-m@sc@IOTchuturubi1923","chuturubi");
+//conectarnos a la base de datos
+define('DB_NAME', 'chuturubi');
+define('DB_USER', 'chuturubi');
+define('DB_PASSWORD', 'm@squiTt-m@sc@IOTchuturubi1923');
+define('DB_HOST', 'localhost');
+
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
+
+if (!$conn) {
+    die('Could not connect: ' . mysqli_error($conn));
 }
-} catch (PDOException $e) {
-  print "Error!: " . $e->getMessage() . "<br/>";
-  die();
+
+$db_selected = mysqli_select_db($conn, DB_NAME);
+
+if (!$db_selected) {
+    die('Cannot access' . DB_NAME . ': ' . mysqli_error($conn));
 }
 
 
@@ -29,9 +38,9 @@ foreach ($devices as $device ) {
 $matches = implode(',', $array);
 
 
-$query = "SELECT * FROM `traffic_devices` WHERE `devices_serie` IN($matches)";
-$result = $conn->query($query);
-$traffics = $result->fetch_all(MYSQLI_ASSOC);
+//$query = "SELECT * FROM `traffic_devices` WHERE `devices_serie` IN($matches)";
+//$result = $conn->query($query);
+//$traffics = $result->fetch_all(MYSQLI_ASSOC);
 
 //print_r($traffics);
 //die();

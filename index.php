@@ -16,13 +16,22 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
     $password= sha1(strip_tags($_POST['password']));
 
     //momento de conectarnos a db
-    $conn = mysqli_connect("localhost","chuturubi","m@squiTt-m@sc@IOTchuturubi1923","chuturubi");
+    define('DB_NAME', 'chuturubi');
+define('DB_USER', 'chuturubi');
+define('DB_PASSWORD', 'm@squiTt-m@sc@IOTchuturubi1923');
+define('DB_HOST', 'localhost');
 
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 
-    if ($conn==false){
-      echo "Hubo un problema al conectarse a María DB";
-      die();
-    }
+if (!$conn) {
+    die('Could not connect: ' . mysqli_error($conn));
+}
+
+$db_selected = mysqli_select_db($conn, DB_NAME);
+
+if (!$db_selected) {
+    die('Cannot access' . DB_NAME . ': ' . mysqli_error($conn));
+}
 
     $result = $conn->query("SELECT * FROM `users` WHERE `users_email` = '".$email."' AND  `users_password` = '".$password."' ");
     $users = $result->fetch_all(MYSQLI_ASSOC);
