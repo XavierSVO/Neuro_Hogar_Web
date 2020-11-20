@@ -10,7 +10,7 @@ if(!$logged){
 $devices = $_SESSION['devices'];
 
 //momento de conectarnos a db
-$conn = mysqli_connect("localhost","admin_cursoiot","121212","admin_cursoiot");
+$conn = mysqli_connect("localhost","mega","xE#0rXgMqmEQD^$BIP$odf'","chuturubi");
 
 
 
