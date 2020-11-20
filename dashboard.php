@@ -8,10 +8,14 @@ if(!$logged){
 }
 
 $devices = $_SESSION['devices'];
-
+try{
 //momento de conectarnos a db
 $conn = mysqli_connect("localhost","chuturubi","m@squiTt-m@sc@IOTchuturubi1923","chuturubi");
-
+}
+} catch (PDOException $e) {
+  print "Error!: " . $e->getMessage() . "<br/>";
+  die();
+}
 
 
 $array = array();

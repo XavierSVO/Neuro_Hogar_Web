@@ -6,13 +6,18 @@ $user = "chuturubi";
 $password = "m@squiTt-m@sc@IOTchuturubi1923";
 $database = "chuturubi";
 
-
+try{
   $conn = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
-
+}
+} catch (PDOException $e) {
+  print "Error!: " . $e->getMessage() . "<br/>";
+  die();
+}
 if ($conn==false){
   echo "Hubo un problema al conectarse a María DB";
   die();
 }
+
 
 //declaramos variables vacias servirán también para repoblar el formulario
 $email = "";
