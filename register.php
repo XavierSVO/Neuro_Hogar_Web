@@ -2,21 +2,25 @@
 
 
 //momento de conectarnos a db
-$user = "chuturubi";
-$password = "m@squiTt-m@sc@IOTchuturubi1923";
-$database = "chuturubi";
 
-try{
-  $conn = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+
+define('DB_NAME', 'chuturubi');
+define('DB_USER', 'chuturubi');
+define('DB_PASSWORD', 'm@squiTt-m@sc@IOTchuturubi1923');
+define('DB_HOST', 'localhost');
+
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
+
+if (!$conn) {
+    die('Could not connect: ' . mysqli_error($conn));
 }
-} catch (PDOException $e) {
-  print "Error!: " . $e->getMessage() . "<br/>";
-  die();
+
+$db_selected = mysqli_select_db($conn, DB_NAME);
+
+if (!$db_selected) {
+    die('Cannot access' . DB_NAME . ': ' . mysqli_error($conn));
 }
-if ($conn==false){
-  echo "Hubo un problema al conectarse a María DB";
-  die();
-}
+
 
 
 //declaramos variables vacias servirán también para repoblar el formulario
