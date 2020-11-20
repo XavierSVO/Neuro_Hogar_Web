@@ -2,7 +2,12 @@
 
 
 //momento de conectarnos a db
-$conn = mysqli_connect("142.44.247.98","chuturubi","m@squiTt-m@sc@IOTchuturubi1923","chuturubi");
+$user = "chuturubi";
+$password = "m@squiTt-m@sc@IOTchuturubi1923";
+$database = "chuturubi";
+
+
+  $conn = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
 
 if ($conn==false){
   echo "Hubo un problema al conectarse a María DB";
