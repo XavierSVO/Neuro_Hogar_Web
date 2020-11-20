@@ -5,8 +5,8 @@
 
 
 define('DB_NAME', 'chuturubi');
-define('DB_USER', 'root');
-define('DB_PASSWORD', ' ');
+define('DB_USER', 'chuturubi');
+define('DB_PASSWORD', 'm@squiTt-m@sc@IOTchuturubi1923');
 define('DB_HOST', 'localhost');
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
