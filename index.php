@@ -16,7 +16,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
     $password= sha1(strip_tags($_POST['password']));
 
     //momento de conectarnos a db
-    $conn = mysqli_connect("localhost","root"," ","chuturubi");
+    $conn = mysqli_connect("localhost","chuturubi","m@squiTt-m@sc@IOTchuturubi1923","chuturubi");
 
 
     if ($conn==false){
