@@ -2,7 +2,7 @@
 
 
 //momento de conectarnos a db
-$conn = mysqli_connect("localhost","chuturubi","m@squiTt-m@sc@IOTchuturubi1923","chuturubi");
+$conn = mysqli_connect("142.44.247.98","chuturubi","m@squiTt-m@sc@IOTchuturubi1923","chuturubi");
 
 if ($conn==false){
   echo "Hubo un problema al conectarse a María DB";
