@@ -95,15 +95,9 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
   <div class="app" id="app">
 
 <!-- ############ LAYOUT START-->
-  <div class="center-block w-xxl w-auto-xs p-y-md">
-    <div class="navbar">
-      <div class="pull-center">
-        <div ui-include="'../views/blocks/navbar.brand.html'"></div>
-      </div>
-    </div>
     <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
       <div class="m-b text-sm">
-        Sign in with your IoT Account
+        Ingresa tu cuenta
       </div>
 
 
@@ -111,11 +105,11 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
       <form target="" method="post" name="form">
         <div class="md-form-group float-label">
           <input name="email" type="email" class="md-input" value="<?php echo $email ?>" ng-model="user.email" required >
-          <label>Email</label>
+          <label>Email </label>
         </div>
         <div  class="md-form-group float-label">
           <input name="password" type="password" class="md-input" ng-model="user.password" required >
-          <label>Password</label>
+          <label>Contraseña</label>
         </div>
         <button type="submit" class="btn primary btn-block p-x-md">Sign in</button>
       </form>
