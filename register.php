@@ -177,5 +177,8 @@ if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwor
   <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
   <script src="html/scripts/ajax.js"></script>
 <!-- endbuild -->
+
+
+
 </body>
 </html>
