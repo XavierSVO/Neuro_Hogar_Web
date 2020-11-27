@@ -179,7 +179,7 @@ if (!$db_selected) {
 
 <!--MQTT.JS-->
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-<script>
+<script type="text/javascript">
     // Initialize a mqtt variable globally
     console.log(mqtt)
     // const mqtt = require('mqtt')
