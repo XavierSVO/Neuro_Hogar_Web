@@ -199,7 +199,8 @@ const options = {
 // mqtts Encrypted TCP connection
 // wxs WeChat applet connection
 // alis Alipay applet connection
-const client = mqtt.connect("mqtt://142.44.247.98")
+const connectUrl = 'wss://142.44.247.98:8093/tcp'
+const client = mqtt.connect(connectUrl, options)
 
 client.on('reconnect', (error) => {
     console.log('reconnecting:', error)
