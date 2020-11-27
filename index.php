@@ -181,37 +181,21 @@ if (!$db_selected) {
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script type="text/javascript">
 
-// connection option
-const options = {
-          clean: true, // retain session
-      connectTimeout: 4000, // Timeout period
-      // Authentication information
-      clientId: 'emqx_test',
-    /*  username: 'emqx_test',
-      password: 'emqx_test',
-      */
-}
+var mqtt = require('mqtt')
+var client  = mqtt.connect('mqtt://142.44.247.98')
 
-// Connect string, and specify the connection method by the protocol
-// ws Unencrypted WebSocket connection
-// wss Encrypted WebSocket connection
-// mqtt Unencrypted TCP connection
-// mqtts Encrypted TCP connection
-// wxs WeChat applet connection
-// alis Alipay applet connection
-const connectUrl = 'wss://142.44.247.98:1883'
-const client = mqtt.connect(connectUrl, options)
-
-client.on('reconnect', (error) => {
-    console.log('reconnecting:', error)
+client.on('connect', function () {
+  client.subscribe('presence', function (err) {
+    if (!err) {
+      client.publish('presence', 'Hello mqtt')
+    }
+  })
 })
 
-client.on('error', (error) => {
-    console.log('Connection failed:', error)
-})
-
-client.on('message', (topic, message) => {
-  console.log('receive message：', topic, message.toString())
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  client.end()
 })
 </script>
 </body>
