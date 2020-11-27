@@ -49,7 +49,7 @@ if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwor
     if ($count == 0){
       $password = sha1($password); //encriptar clave con sha1
       $conn->query("INSERT INTO `users` (`users_email`, `users_password`) VALUES ('".$email."', '".$password."');");
-      $msg.="Usuario creado correctamente, ingrese haciendo  <a href='login.php'>clic aquí</a> <br>";
+      $msg.="Usuario creado correctamente, ingrese haciendo  <a href='index.php'>clic aquí</a> <br>";
     }else{
       $msg.="El mail ingresado ya existe <br>";
     }
@@ -63,7 +63,6 @@ if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwor
 }
 
  ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +139,7 @@ if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['passwor
     </div>
 <br>
     <div class="p-v-lg text-center">
-      <div>Already have an account? <a ui-sref="access.signin" href="login.php" class="text-primary _600">Sign in</a></div>
+      <div>Already have an account? <a ui-sref="access.signin" href="index.php" class="text-primary _600">Sign in</a></div>
     </div>
   </div>
 
