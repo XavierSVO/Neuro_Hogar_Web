@@ -179,17 +179,21 @@ if (!$db_selected) {
 
 <!--MQTT.JS-->
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-<script type="text/javascript">
+<script>
+    // Initialize a mqtt variable globally
+    console.log(mqtt)
+    
+// const mqtt = require('mqtt')
+import mqtt from 'mqtt'
 
 // connection option
 const options = {
           clean: true, // retain session
       connectTimeout: 4000, // Timeout period
       // Authentication information
-      clientId: 'emqx_test',
-    /*  username: 'emqx_test',
-      password: 'emqx_test',
-      */
+     // clientId: 'emqx_test',
+     // username: 'emqx_test',
+     // password: 'emqx_test',
 }
 
 // Connect string, and specify the connection method by the protocol
@@ -199,8 +203,8 @@ const options = {
 // mqtts Encrypted TCP connection
 // wxs WeChat applet connection
 // alis Alipay applet connection
-const connectUrl = 'mqtt://142.44.247.98:1883'
-const client = mqtt.connect(connectUrl)
+const connectUrl = 'wss://142.44.247.98:8093/mqtt'
+const client = mqtt.connect(connectUrl, options)
 
 client.on('reconnect', (error) => {
     console.log('reconnecting:', error)
@@ -214,5 +218,6 @@ client.on('message', (topic, message) => {
   console.log('receive message：', topic, message.toString())
 })
 </script>
+
 </body>
 </html>
