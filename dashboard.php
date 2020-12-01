@@ -575,8 +575,8 @@ const options = {
       connectTimeout: 4000,
       // Authentication
       clientId: 'iotmc',
-      username: 'web_client',
-      password: '121212',
+     // username: 'web_client',
+     // password: '121212',
       keepalive: 60,
       clean: true,
 }
@@ -584,7 +584,7 @@ const options = {
 var connected = false;
 
 // WebSocket connect url
-const WebSocket_URL = 'wss://cursoiot.ga:8094/mqtt'
+const WebSocket_URL = 'wss://142.44.247.98:8094/mqtt'
 
 const client = mqtt.connect(WebSocket_URL, options)
 
@@ -625,5 +625,6 @@ client.on('error', (error) => {
 </script>
 
 <!-- endbuild -->
+
 </body>
 </html>
