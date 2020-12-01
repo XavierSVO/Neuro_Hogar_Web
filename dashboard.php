@@ -584,7 +584,7 @@ const options = {
 var connected = false;
 
 // WebSocket connect url
-const WebSocket_URL = 'wss://142.44.247.98:8094/mqtt'
+const WebSocket_URL = 'wss://142.44.247.98:8093/mqtt'
 
 const client = mqtt.connect(WebSocket_URL, options)
 
