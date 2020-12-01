@@ -206,6 +206,10 @@ const options = {
 const connectUrl = 'wss://142.44.247.98:8093/mqtt'
 const client = mqtt.connect(connectUrl, options)
 
+client.on('connect', () => {
+    console.log("Conexion exitosa")
+})
+
 client.on('reconnect', (error) => {
     console.log('reconnecting:', error)
 })
