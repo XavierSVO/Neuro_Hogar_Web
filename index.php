@@ -203,7 +203,7 @@ const options = {
 // mqtts Encrypted TCP connection
 // wxs WeChat applet connection
 // alis Alipay applet connection
-const connectUrl = 'wss://142.44.247.98:8093/mqtt'
+const connectUrl = 'wss://142.44.247.98:8083/mqtt'
 const client = mqtt.connect(connectUrl, options)
 
 client.on('connect', () => {
