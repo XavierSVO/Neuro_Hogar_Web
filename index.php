@@ -191,7 +191,7 @@ const options = {
           clean: true, // retain session
       connectTimeout: 4000, // Timeout period
       // Authentication information
-     // clientId: 'emqx_test',
+     clientId: 'mqttjs_725fe28eca',
      // username: 'emqx_test',
      // password: 'emqx_test',
 }
@@ -203,7 +203,7 @@ const options = {
 // mqtts Encrypted TCP connection
 // wxs WeChat applet connection
 // alis Alipay applet connection
-const connectUrl = 'wss://142.44.247.98:8083/mqtt'
+const connectUrl = 'ws://142.44.247.98:8083/mqtt'
 const client = mqtt.connect(connectUrl, options)
 
 client.on('connect', () => {
