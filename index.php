@@ -180,7 +180,8 @@ if (!$db_selected) {
 <!--MQTT.JS-->
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script>
-    var mqtt = require('mqtt')
+    
+
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 
 client.on('connect', function () {
