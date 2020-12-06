@@ -133,10 +133,9 @@ $matches = implode(',', $array);
           <div class="nav-fold">
             <a href="profile.html">
               <span class="pull-left">
-                <img src="assets/images/a0.jpg" alt="..." class="w-40 img-circle">
               </span>
               <span class="clear hidden-folded p-x">
-                <span class="block _500">Jean Reyes</span>
+                <span class="block _500">Xavier VACA</span>
                 <small class="block text-muted"><i class="fa fa-circle text-success m-r-sm"></i>online</small>
               </span>
             </a>
@@ -190,7 +189,6 @@ $matches = implode(',', $array);
             <li class="nav-item dropdown">
               <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
                 <span class="avatar w-32">
-                  <img src="assets/images/a0.jpg" alt="...">
                   <i class="on b-white bottom"></i>
                 </span>
               </a>
