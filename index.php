@@ -34,8 +34,8 @@ if (!$db_selected) {
 }
 
     $result = $conn->query("SELECT * FROM `users` WHERE `users_email` = '".$email."' AND  `users_password` = '".$password."' ");
+    
     $users = $result->fetch_all(MYSQLI_ASSOC);
-
 
     //cuento cuantos elementos tiene $tabla,
     $count = count($users);
@@ -120,7 +120,7 @@ if (!$db_selected) {
           <input name="password" type="password" class="md-input" ng-model="user.password" required >
           <label>Contraseña</label>
         </div>
-        <button type="submit" class="btn primary btn-block p-x-md">Sign in</button>
+        <button type="submit" class="btn primary btn-block p-x-md">ingresar</button>
       </form>
 
       <div style="color:red" class="">
@@ -134,8 +134,8 @@ if (!$db_selected) {
     </div>
 
     <div class="p-v-lg text-center">
-      <div class="m-b"><a ui-sref="access.forgot-password" href="forgot-password.html" class="text-primary _600">Forgot password?</a></div>
-      <div>Do not have an account? <a ui-sref="access.signup" href="register.php" class="text-primary _600">Sign up</a></div>
+      <div class="m-b"><a ui-sref="access.forgot-password" href="forgot-password.html" class="text-primary _600">Olvidaste tu contraseña?</a></div>
+      <div>Aun no tienes cuenta? <a ui-sref="access.signup" href="register.php" class="text-primary _600">Registrate</a></div>
     </div>
   </div>
 
@@ -182,7 +182,7 @@ if (!$db_selected) {
 <script>
     
 
-var client  = mqtt.connect("wss://142.44.247.98:8084/mqtt")
+var client  = mqtt.connect("ws://142.44.247.98:8084/mqtt")
 
 client.on('connect', function () {
   client.subscribe('presence', function (err) {
