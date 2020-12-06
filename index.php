@@ -180,46 +180,21 @@ if (!$db_selected) {
 <!--MQTT.JS-->
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script>
-    // Initialize a mqtt variable globally
-    console.log(mqtt)
-    
-// const mqtt = require('mqtt')
-import mqtt from 'mqtt'
+    var mqtt = require('mqtt')
+var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 
-// connection option
-const options = {
-          clean: true, // retain session
-      connectTimeout: 4000, // Timeout period
-      // Authentication information
-     clientId: 'mqttjs_725fe28eca',
-     // username: 'emqx_test',
-     // password: 'emqx_test',
-}
-
-// Connect string, and specify the connection method by the protocol
-// ws Unencrypted WebSocket connection
-// wss Encrypted WebSocket connection
-// mqtt Unencrypted TCP connection
-// mqtts Encrypted TCP connection
-// wxs WeChat applet connection
-// alis Alipay applet connection
-const connectUrl = 'ws://142.44.247.98:8083/mqtt'
-const client = mqtt.connect(connectUrl, options)
-
-client.on('connect', () => {
-    console.log("Conexion exitosa")
+client.on('connect', function () {
+  client.subscribe('presence', function (err) {
+    if (!err) {
+      client.publish('presence', 'Hello mqtt')
+    }
+  })
 })
 
-client.on('reconnect', (error) => {
-    console.log('reconnecting:', error)
-})
-
-client.on('error', (error) => {
-    console.log('Connection failed:', error)
-})
-
-client.on('message', (topic, message) => {
-  console.log('receive message：', topic, message.toString())
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  client.end()
 })
 </script>
 
