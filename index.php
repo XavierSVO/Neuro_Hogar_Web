@@ -197,6 +197,12 @@ client.on('message', function (topic, message) {
   console.log(message.toString())
   client.end()
 })
+
+client.publish('testtopic','helo via publicacion',error()=>
+{
+  console.log('Error');
+})
+
 </script>
 
 </body>
