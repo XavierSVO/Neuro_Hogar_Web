@@ -188,6 +188,11 @@ client.on('connect', function () {
   client.subscribe('presence', function (err) {
     if (!err) {
       client.publish('presence', 'Hello mqtt')
+
+      client.publish('testtopic','hello via publicacion',(error)=>
+      {
+      console.log('Error');
+      })
     }
   })
 })
@@ -195,10 +200,7 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
   // message is Buffer
   console.log(message.toString())
-  client.publish('testtopic','helo via publicacion',(error)=>
-{
-  console.log('Error');
-})
+ 
 
   client.end()
 })
