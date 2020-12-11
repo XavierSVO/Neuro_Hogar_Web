@@ -632,17 +632,8 @@ var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 //Si se conecta
 client.on('connect', function () {
 
-  if( $('#switch-led').is(':checked') ) {
-    client.publish('testtopic','1',(error)=>{  
-    console.log('Error'||'Mensaje enviado por mqtt');
-    })
-  }
-  else
-  {
-    client.publish('testtopic','0',(error)=>{  
-    console.log('Error'||'Mensaje enviado por mqtt');
-    })
-  }
+ 
+  
   client.publish('testtopic','hello via publicacion',(error)=>{  
     console.log('Error'||'Mensaje enviado por mqtt');
   })
@@ -663,6 +654,18 @@ client.on('message', function (topic, message) {
 }
 
 })
+var isChecked = document.getElementById('switch-led').checked;
+  if(isChecked){
+    client.publish('testtopic','1',(error)=>{  
+    console.log('Error'||'Mensaje enviado por mqtt');
+    })
+  }
+  else
+  {
+    client.publish('testtopic','0',(error)=>{  
+    console.log('Error'||'Mensaje enviado por mqtt');
+    })
+  }
 
 </script>
 
