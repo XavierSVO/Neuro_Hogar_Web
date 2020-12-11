@@ -254,7 +254,7 @@ $matches = implode(',', $array);
                   </span>
                 </div>
                 <div class="clear">
-                  <h4 class="m-0 text-lg _300"><b id="display_temp1">-- </b><span class="text-sm"> C</span></h4>
+                  <h4 class="m-0 text-lg _300"><b id="display_temp">-- </b><span class="text-sm"> C</span></h4>
                   <small class="text-muted">Promedio: 17 C</small>
                 </div>
               </div>
@@ -485,7 +485,7 @@ class="p-a col-sm-6 lter">
 ****** PROCESOS  *************
 ******************************
 */
-
+$("#display_temp")
 
 function command(action){
   var device_serie = $( "#device_id" ).val();
@@ -558,7 +558,7 @@ function process_led2(){
   }
 }
 
-
+$("#display_temp1").html("77");
 
 
 
@@ -622,7 +622,38 @@ client.on('error', (error) => {
 
 </script>
 
+
+
 <!-- endbuild -->
 
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+<script>
+    
+var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
+//Si se conecta
+client.on('connect', function () {
+
+  client.publish('testtopic','hello via publicacion',(error)=>{  
+    console.log('Error'||'Mensaje enviado por mqtt');
+  })
+  
+  client.subscribe('commands',{qos:0},(error)=>{
+    if(!error){
+      console.log('Subscripcion exitosa');
+      }
+    }
+  )
+})
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+
+})
+
+</script>
+
 </body>
+
 </html>

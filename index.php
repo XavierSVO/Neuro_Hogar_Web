@@ -184,7 +184,7 @@ if (!$db_selected) {
 <script>
     
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
-
+//Si se conecta
 client.on('connect', function () {
 
   client.publish('testtopic','hello via publicacion',(error)=>{  
