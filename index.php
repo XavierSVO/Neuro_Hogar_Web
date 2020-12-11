@@ -189,10 +189,10 @@ client.on('connect', function () {
   client.publish('testtopic','hello via publicacion',(error)=>{  
     console.log('Error'||'Mensaje enviado por mqtt');
   })
-  client.subscribe('commands',{qos=0},(error)=>{
-  if(!error){
-    console.log('Subscripcion exitosa')
-  }
+  client.subscribe('commands',{qos:0},(error)=>{
+    if(!error){
+      console.log('Subscripcion exitosa')
+    }
   }
 }))
 
