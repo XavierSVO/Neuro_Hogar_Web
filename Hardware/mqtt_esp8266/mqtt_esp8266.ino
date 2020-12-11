@@ -23,8 +23,8 @@
 
 // Update these with values suitable for your network.
 
-const char* ssid = "Flia Meza";
-const char* password = "Dirtybeat01Meza";
+const char* ssid = "Familia Ordone";
+const char* password = "familiao12349";
 const char* mqtt_server = "142.44.247.98";
 
 WiFiClient espClient;
@@ -33,6 +33,10 @@ unsigned long lastMsg = 0;
 #define MSG_BUFFER_SIZE  (50)
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
+
+#define D1 5
+
+#define D2 4
 
 void setup_wifi() {
 
@@ -68,12 +72,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.println();
 
   // Switch on the LED if an 1 was received as first character
+  Serial.print((char)payload[0]);
   if ((char)payload[0] == '1') {
-    digitalWrite(BUILTIN_LED, LOW);   // Turn the LED on (Note that LOW is the voltage level
+    digitalWrite(D1,HIGH);   // Turn the LED on (Note that LOW is the voltage level
     // but actually the LED is on; this is because
     // it is active low on the ESP-01)
   } else {
-    digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
+    digitalWrite(D1, LOW);  // Turn the LED off by making the voltage HIGH
   }
 
 }
@@ -91,7 +96,7 @@ void reconnect() {
       // Once connected, publish an announcement...
       client.publish("testtopic","conectado");
       // ... and resubscribe
-      client.subscribe("cliente");
+      client.subscribe("testtopic");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -103,7 +108,8 @@ void reconnect() {
 }
 
 void setup() {
-  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  pinMode(D1, OUTPUT);
+  pinMode(D2, OUTPUT);// Initialize the BUILTIN_LED pin as an output
   Serial.begin(115200);
   setup_wifi();
   client.setServer(mqtt_server, 1883);

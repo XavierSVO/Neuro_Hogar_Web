@@ -257,6 +257,9 @@ $matches = implode(',', $array);
                   <h4 class="m-0 text-lg _300"><b id="display_temp">-- </b><span class="text-sm"> C</span></h4>
                   <small class="text-muted">Promedio: 17 C</small>
                 </div>
+                <div>
+                <b id="idsplayled">--</b>
+                </div>
               </div>
             </div>
 
@@ -477,8 +480,8 @@ class="p-a col-sm-6 lter">
 <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
 <script src="html/scripts/ajax.js"></script>
 
-<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-<script type="text/javascript">
+<!-- <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script type="text/javascript"> -->
 
 /*
 ******************************
@@ -557,8 +560,6 @@ class="p-a col-sm-6 lter">
 //   }
 // }
 
-$("#display_temp").html("77");
-
 
 
 /*
@@ -589,10 +590,10 @@ $("#display_temp").html("77");
 // client.on('connect', () => {
 //     console.log('Mqtt conectado por WS! Exito!')
 
-//     <?php foreach ($devices as $device) { ?>
-//       client.subscribe('<?php echo $device['devices_serie'] ?>/access_query', { qos: 0 }, (error) => {})
-//       client.subscribe('<?php echo $device['devices_serie'] ?>/temp', { qos: 0 }, (error) => {})
-//     <?php } ?>
+//<?php foreach ($devices as $device) { ?>
+    //  client.subscribe('<?php echo $device['devices_serie'] ?>/access_query', { qos: 0 }, (error) => {})
+     // client.subscribe('<?php echo $device['devices_serie'] ?>/temp', { qos: 0 }, (error) => {})
+<?php } ?>
 
 //     // publish(topic, payload, options/callback)
 //     client.publish('fabrica', 'esto es un verdadero éxito', (error) => {
@@ -619,7 +620,7 @@ $("#display_temp").html("77");
 
 
 
-// </script>
+<!-- // </script> -->
 
 
 
@@ -628,7 +629,7 @@ $("#display_temp").html("77");
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
 <script>
-    
+  $($'#ledidsplayled').html("Funciona")
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 //Si se conecta
 client.on('connect', function () {
