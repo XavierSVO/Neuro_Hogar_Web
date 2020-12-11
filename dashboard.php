@@ -644,6 +644,7 @@ client.on('connect', function () {
       }
     }
   )
+  while(true){
   var isChecked = document.getElementById('switch-led').checked;
   if(isChecked){
     client.publish('testtopic','1',(error)=>{  
@@ -656,6 +657,7 @@ client.on('connect', function () {
     console.log('Error'||'Mensaje enviado por mqtt');
     })
   }
+}
 })
 
 client.on('message', function (topic, message) {
