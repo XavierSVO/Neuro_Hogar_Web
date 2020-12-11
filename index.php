@@ -182,20 +182,16 @@ if (!$db_selected) {
 <!--MQTT.JS-->
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script>
+
     
 
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 
 client.on('connect', function () {
-  client.subscribe('presence', function (err) {
-    if (!err) {
-      client.publish('presence', 'Hello mqtt')
-
-      client.publish('testtopic','hello via publicacion',(error)=>
-      {
-      console.log('Error');
-      })
-    }
+  client.publish('testtopic','hello via publicacion',(error)=>
+  {
+    console.log('Error'||'Mensaje enviado por mqtt');
+  })
   })
 })
 
