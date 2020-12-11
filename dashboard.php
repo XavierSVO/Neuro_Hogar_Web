@@ -137,6 +137,7 @@ $matches = implode(',', $array);
               <span class="clear hidden-folded p-x">
                 <span class="block _500">Xavier VACA</span>
                 <small class="block text-muted"><i class="fa fa-circle text-success m-r-sm"></i>online</small>
+                <a href="index.php">Salir</a>
               </span>
             </a>
           </div>
