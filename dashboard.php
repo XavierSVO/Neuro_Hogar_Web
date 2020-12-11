@@ -258,7 +258,7 @@ $matches = implode(',', $array);
                   <small class="text-muted">Promedio: 17 C</small>
                 </div>
                 <div>
-                <b id="idsplayled">--</b>
+                <b id="display_led">--</b>
                 </div>
               </div>
             </div>
@@ -625,7 +625,7 @@ class="p-a col-sm-6 lter">
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
 <script>
-  $($'#ledidsplayled').html("Funciona")
+  $($'#display_led').html("Funciona")
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 //Si se conecta
 client.on('connect', function () {
