@@ -23,14 +23,14 @@
 
 // Update these with values suitable for your network.
 
-const char* ssid = "Familia Ordone";
-const char* password = "familiao12349";
-const char* mqtt_server = "ws://142.44.247.98:8083/mqtt";
+const char* ssid = "Flia Meza";
+const char* password = "Dirtybeat01Meza";
+const char* mqtt_server = "142.44.247.98";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 unsigned long lastMsg = 0;
-#define MSG_BUFFER_SIZE	(50)
+#define MSG_BUFFER_SIZE  (50)
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
 
