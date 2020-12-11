@@ -191,7 +191,7 @@ client.on('connect', function () {
   })
   client.subscribe('commands',{qos:0},(error)=>{
     if(!error){
-      console.log('Subscripcion exitosa')
+      console.log('Subscripcion exitosa');
     }
   }
 }))
