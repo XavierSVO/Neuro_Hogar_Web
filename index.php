@@ -196,7 +196,7 @@ client.on('connect', function () {
       console.log('Subscripcion exitosa');
       }
     }
-  })
+  )
 )
 
 client.on('message', function (topic, message) {
