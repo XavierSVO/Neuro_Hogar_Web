@@ -16,9 +16,12 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
     $password= sha1(strip_tags($_POST['password']));
 
     //momento de conectarnos a db
-    define('DB_NAME', 'chuturubi');
+define('DB_NAME', 'chuturubi');
+
 define('DB_USER', 'chuturubi');
+
 define('DB_PASSWORD', 'm@squiTt-m@sc@IOTchuturubi1923');
+
 define('DB_HOST', 'localhost');
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
@@ -93,7 +96,6 @@ if (!$db_selected) {
   <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
   <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
-
   <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
   <!-- build:css ../assets/styles/app.min.css -->
   <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
@@ -200,9 +202,7 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
   // message is Buffer
   console.log(message.toString())
- 
 
-  client.end()
 })
 
 
