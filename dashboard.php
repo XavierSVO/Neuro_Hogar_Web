@@ -644,14 +644,6 @@ client.on('connect', function () {
       }
     }
   )
-})
-
-client.on('message', function (topic, message) {
-  // message is Buffer
-  console.log(message.toString())
-  $('#display_led').html(message.toString())
-  
-})
   var isChecked = document.getElementById('switch-led').checked;
   if(isChecked){
     client.publish('testtopic','1',(error)=>{  
@@ -664,6 +656,15 @@ client.on('message', function (topic, message) {
     console.log('Error'||'Mensaje enviado por mqtt');
     })
   }
+})
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  $('#display_led').html(message.toString())
+  
+})
+  
 
 </script>
 
