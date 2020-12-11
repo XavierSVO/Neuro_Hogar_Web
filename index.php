@@ -188,12 +188,17 @@ if (!$db_selected) {
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 
 client.on('connect', function () {
+  
   client.publish('testtopic','hello via publicacion',(error)=>
+  
   {
+  
     console.log('Error'||'Mensaje enviado por mqtt');
+  
   })
+  
   })
-)
+
 
 client.on('message', function (topic, message) {
   // message is Buffer
