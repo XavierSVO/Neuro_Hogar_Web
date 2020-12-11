@@ -484,81 +484,80 @@ class="p-a col-sm-6 lter">
 ******************************
 ****** PROCESOS  *************
 ******************************
-*/
-$("#display_temp")
+// */
 
-function command(action){
-  var device_serie = $( "#device_id" ).val();
-  console.log(device_serie);
-  if(action == "open"){
-    client.publish(device_serie + "/command", 'open', (error) => {
-      console.log(error || 'Abriendo!!!')
-    });
-  }else{
-    client.publish(device_serie + "/command", 'close', (error) => {
-      console.log(error || 'Cerrando!!!')
-    });
-  }
-}
+// function command(action){
+//   var device_serie = $( "#device_id" ).val();
+//   console.log(device_serie);
+//   if(action == "open"){
+//     client.publish(device_serie + "/command", 'open', (error) => {
+//       console.log(error || 'Abriendo!!!')
+//     });
+//   }else{
+//     client.publish(device_serie + "/command", 'close', (error) => {
+//       console.log(error || 'Cerrando!!!')
+//     });
+//   }
+// }
 
-var audio = new Audio('audio.mp3');
-function process_msg(topic, message){
-  var msg = message.toString();
-  var splitted_topic = topic.split("/");
-  var serial_number = splitted_topic[0];
-  var query = splitted_topic[1];
+// var audio = new Audio('audio.mp3');
+// function process_msg(topic, message){
+//   var msg = message.toString();
+//   var splitted_topic = topic.split("/");
+//   var serial_number = splitted_topic[0];
+//   var query = splitted_topic[1];
 
-  if (query == "temp"){
-    $("#display_temp1").html(msg);
-  }
+//   if (query == "temp"){
+//     $("#display_temp1").html(msg);
+//   }
 
-  if (query == "access_query"){
-    $("#display_new_access").html("Nuevo acceso: " + msg);
-    audio.play();
+//   if (query == "access_query"){
+//     $("#display_new_access").html("Nuevo acceso: " + msg);
+//     audio.play();
 
-    setTimeout(function(){
-      $("#display_new_access").html("");
-    }, 3000);
+//     setTimeout(function(){
+//       $("#display_new_access").html("");
+//     }, 3000);
 
-  }
-
+//   }
 
 
 
 
-}
 
-function process_led1(){
-  if ($('#input_led1').is(":checked")){
-    console.log("Encendido");
+// }
 
-    client.publish('led1', 'on', (error) => {
-      console.log(error || 'Mensaje enviado!!!')
-    })
-  }else{
-    console.log("Apagado");
-    client.publish('led1', 'off', (error) => {
-      console.log(error || 'Mensaje enviado!!!')
-    })
-  }
-}
+// function process_led1(){
+//   if ($('#input_led1').is(":checked")){
+//     console.log("Encendido");
 
-function process_led2(){
-  if ($('#input_led2').is(":checked")){
-    console.log("Encendido");
+//     client.publish('led1', 'on', (error) => {
+//       console.log(error || 'Mensaje enviado!!!')
+//     })
+//   }else{
+//     console.log("Apagado");
+//     client.publish('led1', 'off', (error) => {
+//       console.log(error || 'Mensaje enviado!!!')
+//     })
+//   }
+// }
 
-    client.publish('led2', 'on', (error) => {
-      console.log(error || 'Mensaje enviado!!!')
-    })
-  }else{
-    console.log("Apagado");
-    client.publish('led2', 'off', (error) => {
-      console.log(error || 'Mensaje enviado!!!')
-    })
-  }
-}
+// function process_led2(){
+//   if ($('#input_led2').is(":checked")){
+//     console.log("Encendido");
 
-$("#display_temp1").html("77");
+//     client.publish('led2', 'on', (error) => {
+//       console.log(error || 'Mensaje enviado!!!')
+//     })
+//   }else{
+//     console.log("Apagado");
+//     client.publish('led2', 'off', (error) => {
+//       console.log(error || 'Mensaje enviado!!!')
+//     })
+//   }
+// }
+
+$("#display_temp").html("77");
 
 
 
@@ -569,58 +568,58 @@ $("#display_temp1").html("77");
 */
 
 // connect options
-const options = {
-      connectTimeout: 4000,
-      // Authentication
-      clientId: 'iotmc',
-     // username: 'web_client',
-     // password: '121212',
-      keepalive: 60,
-      clean: true,
-}
+// const options = {
+//       connectTimeout: 4000,
+//       // Authentication
+//       clientId: 'iotmc',
+//      // username: 'web_client',
+//      // password: '121212',
+//       keepalive: 60,
+//       clean: true,
+// }
 
-var connected = false;
+// var connected = false;
 
-// WebSocket connect url
-const WebSocket_URL = 'wss://142.44.247.98:8094/mqtt'
+// // WebSocket connect url
+// const WebSocket_URL = 'ws://142.44.247.98:8083/mqtt'
 
-const client = mqtt.connect(WebSocket_URL, options)
-
-
-client.on('connect', () => {
-    console.log('Mqtt conectado por WS! Exito!')
-
-    <?php foreach ($devices as $device) { ?>
-      client.subscribe('<?php echo $device['devices_serie'] ?>/access_query', { qos: 0 }, (error) => {})
-      client.subscribe('<?php echo $device['devices_serie'] ?>/temp', { qos: 0 }, (error) => {})
-    <?php } ?>
-
-    // publish(topic, payload, options/callback)
-    client.publish('fabrica', 'esto es un verdadero éxito', (error) => {
-      console.log(error || 'Mensaje enviado!!!');
-    })
-})
-
-client.on('message', (topic, message) => {
-  console.log('Mensaje recibido bajo tópico: ', topic, ' -> ', message.toString());
-  process_msg(topic, message);
-})
-
-client.on('reconnect', (error) => {
-    console.log('Error al reconectar', error)
-})
-
-client.on('error', (error) => {
-    console.log('Error de conexión:', error)
-})
+// const client = mqtt.connect(WebSocket_URL, options)
 
 
+// client.on('connect', () => {
+//     console.log('Mqtt conectado por WS! Exito!')
+
+//     <?php foreach ($devices as $device) { ?>
+//       client.subscribe('<?php echo $device['devices_serie'] ?>/access_query', { qos: 0 }, (error) => {})
+//       client.subscribe('<?php echo $device['devices_serie'] ?>/temp', { qos: 0 }, (error) => {})
+//     <?php } ?>
+
+//     // publish(topic, payload, options/callback)
+//     client.publish('fabrica', 'esto es un verdadero éxito', (error) => {
+//       console.log(error || 'Mensaje enviado!!!');
+//     })
+// })
+
+// client.on('message', (topic, message) => {
+//   console.log('Mensaje recibido bajo tópico: ', topic, ' -> ', message.toString());
+//   process_msg(topic, message);
+// })
+
+// client.on('reconnect', (error) => {
+//     console.log('Error al reconectar', error)
+// })
+
+// client.on('error', (error) => {
+//     console.log('Error de conexión:', error)
+// })
 
 
 
 
 
-</script>
+
+
+// </script>
 
 
 
