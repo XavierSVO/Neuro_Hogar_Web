@@ -625,7 +625,7 @@ class="p-a col-sm-6 lter">
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
 <script>
-  $($'#display_led').html("Funciona")
+  $('#display_led').html("Funciona")
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 //Si se conecta
 client.on('connect', function () {
