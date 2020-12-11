@@ -190,12 +190,11 @@ client.on('connect', function () {
     console.log('Error'||'Mensaje enviado por mqtt');
   })
   client.subscribe('commands',{qos=0},(error)=>{
-  if(!error)
-  {
+  if(!error){
     console.log('Subscripcion exitosa')
   }
   }
-})
+}))
 
 client.on('message', function (topic, message) {
   // message is Buffer
