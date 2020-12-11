@@ -479,11 +479,7 @@ class="p-a col-sm-6 lter">
 <!-- ajax -->
 <script src="libs/jquery/jquery-pjax/jquery.pjax.js"></script>
 <script src="html/scripts/ajax.js"></script>
-
-<!-- <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-<script type="text/javascript"> -->
-
-/*
+<!-- 
 ******************************
 ****** PROCESOS  *************
 ******************************
@@ -612,7 +608,7 @@ class="p-a col-sm-6 lter">
 
 // client.on('error', (error) => {
 //     console.log('Error de conexión:', error)
-// })
+// }) -->
 
 
 
