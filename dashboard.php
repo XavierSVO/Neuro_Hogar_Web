@@ -634,7 +634,7 @@ client.on('connect', function () {
     console.log('Error'||'Mensaje enviado por mqtt');
   })
   
-  client.subscribe('commands',{qos:0},(error)=>{
+  client.subscribe('testtopic',{qos:0},(error)=>{
     if(!error){
       console.log('Subscripcion exitosa');
       }
