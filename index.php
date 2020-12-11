@@ -193,7 +193,7 @@ client.on('connect', function () {
     console.log('Error'||'Mensaje enviado por mqtt');
   })
   })
-})
+)
 
 client.on('message', function (topic, message) {
   // message is Buffer
