@@ -263,10 +263,7 @@ $matches = implode(',', $array);
                 </div>
               </div>
             </div>
-
-
           </div>
-
           <!-- VALORES EN TIEMPO REAL -->
           <div class="row">
             <div class="col-sm-6">

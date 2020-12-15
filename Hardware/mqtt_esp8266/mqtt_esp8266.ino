@@ -20,12 +20,18 @@
 
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
-
+#include <DHT.h>  
 // Update these with values suitable for your network.
 
 const char* ssid = "Familia Ordone";
 const char* password = "familiao12349";
 const char* mqtt_server = "142.44.247.98";
+
+#define DHTPIN 13
+
+#define DHTTYPE DHT11   
+
+DHT dht(DHTPIN, DHTTYPE);
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -63,6 +69,8 @@ void setup_wifi() {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
+ 
+  
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
@@ -80,6 +88,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   } else {
     digitalWrite(D1, LOW);  // Turn the LED off by making the voltage HIGH
   }
+  
+  float temp = dht.readTemperature(); 
+  float hum = dht.readHumidity();
+
+  client.publish("testtopic",temp);
+  client.publish("testtopic",hum);
 
 }
 
@@ -108,6 +122,7 @@ void reconnect() {
 }
 
 void setup() {
+    dht.begin();
   pinMode(D1, OUTPUT);
   pinMode(D2, OUTPUT);// Initialize the BUILTIN_LED pin as an output
   Serial.begin(115200);
