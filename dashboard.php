@@ -631,7 +631,7 @@ client.on('connect', function () {
 })
 client.on('message', function (topic, message) {
   console.log('Mensaje recibido bajo tópico: ', topic, ' -> ', message.toString());
-  $('#display_temp').html(message.message.toString())
+  $('#display_temp').html(message.toString())
 })
 
 function process_led(){
