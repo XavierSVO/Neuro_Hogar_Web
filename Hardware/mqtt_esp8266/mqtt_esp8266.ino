@@ -26,6 +26,9 @@
 const char* ssid = "Familia Ordone";
 const char* password = "familiao12349";
 const char* mqtt_server = "142.44.247.98";
+char mensaje[500]="";
+int ultimaVez = millis(); // Para enviar cada X segundos pero sin usar delay
+#define TIEMPO_ESPERA 4000 // Cada cuánto leer del sensor
 
 #define DHTPIN 13
 
@@ -85,15 +88,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(D1,HIGH);   // Turn the LED on (Note that LOW is the voltage level
     // but actually the LED is on; this is because
     // it is active low on the ESP-01)
-  } else {
+  } if ((char)payload[0] == '0') {
     digitalWrite(D1, LOW);  // Turn the LED off by making the voltage HIGH
   }
   
-  float temp = dht.readTemperature(); 
-  float hum = dht.readHumidity();
 
-  client.publish("testtopic",temp);
-  client.publish("testtopic",hum);
 
 }
 
@@ -147,4 +146,40 @@ void loop() {
     Serial.println(msg);
     client.publish("outTopic", msg);
   }
+  
+ 
+
+    // Si han pasado más de 2 segundos desde la última vez, enviar un mensaje
+  if (millis() - ultimaVez > TIEMPO_ESPERA)
+  {
+    float temp = dht.readTemperature(); 
+
+  float hum = dht.readHumidity();
+    // En ocasiones puede devolver datos erróneos; por eso lo comprobamos
+    if (isnan(temp) || isnan(hum))
+    {
+      ultimaVez = millis();
+      return;
+    }
+
+    String clientId = "ESP8266Client-";
+    clientId += String(random(0xffff), HEX);
+  
+  
+  
+    if (client.connect(clientId.c_str())) {
+      
+        Serial.println("connected");
+      
+        // Once connected, publish an announcement...
+
+       delay(1000);
+       
+       sprintf(mensaje, "Temperatura: %.2f. Humedad: %.2f", temp, hum);
+       
+       client.publish("temp", mensaje);
+    } 
+  }
+  delay(10);
+  
 }

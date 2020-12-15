@@ -255,8 +255,8 @@ $matches = implode(',', $array);
                   </span>
                 </div>
                 <div class="clear">
-                  <h4 class="m-0 text-lg _300"><b id="display_temp">-- </b><span class="text-sm"> C</span></h4>
-                  <small class="text-muted">Promedio: 17 C</small>
+                  <h4 class="m-0 text-lg _300"><b id="display_temp">-</b><span class="text-sm"> C</span></h4>
+                  <small class="text-muted">Temperatura</small>
                 </div>
                 <div>
                 <input onclick="process_led()" type="checkbox" id="switch-led">
@@ -610,7 +610,6 @@ class="p-a col-sm-6 lter">
 
 <script>
 
-$('#display_led').html("Funciona")
 
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 //Si se conecta
@@ -620,9 +619,10 @@ client.on('connect', function () {
     console.log('Error'||'Mensaje enviado por mqtt');
   })
   
-  client.subscribe('testtopic',{qos:0},(error)=>{
+  client.subscribe('temp',{qos:0},(error)=>{
     if(!error){
-      console.log('Subscripcion exitosa');
+      
+      
       }
     }
   )
@@ -630,22 +630,8 @@ client.on('connect', function () {
  
 })
 client.on('message', function (topic, message) {
-  // message is Buffer
-  // console.log(message.toString())
-  // $('#display_led').html(message.toString())
-  // var isChecked = document.getElementById('switch-led').checked;
-  // if(isChecked){
-  //   client.publish('testtopic','1',(error)=>{  
-  //   console.log('Error'||'Mensaje enviado por mqtt');
-  //   })
-  // }
-  // else
-  // {
-  //   client.publish('testtopic','0',(error)=>{  
-  //   console.log('Error'||'Mensaje enviado por mqtt');
-  //   })
-  // }
-  
+  console.log('Mensaje recibido bajo tópico: ', topic, ' -> ', message.toString());
+  $('#display_temp').html(message.message.toString())
 })
 
 function process_led(){
