@@ -653,16 +653,16 @@ client.on('message', function (topic, message) {
 })
 
 function process_led(){
-  if ($('#switch-led').is(":checked")){
-    console.log("Encendido");
-
-    client.publish('testtopic', '1', (error) => {
-      console.log(error || 'Mensaje enviado!!!')
+  var isChecked = document.getElementById('switch-led').checked;
+  if(isChecked){
+    client.publish('testtopic','1',(error)=>{  
+    console.log('Error'||'Mensaje enviado por mqtt');
     })
-  }else{
-    console.log("Apagado");
-    client.publish('testtopic', '0', (error) => {
-      console.log(error || 'Mensaje enviado!!!')
+  }
+  else
+  {
+    client.publish('testtopic','0',(error)=>{  
+    console.log('Error'||'Mensaje enviado por mqtt');
     })
   }
 }
