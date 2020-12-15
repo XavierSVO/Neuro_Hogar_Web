@@ -259,8 +259,7 @@ $matches = implode(',', $array);
                   <small class="text-muted">Promedio: 17 C</small>
                 </div>
                 <div>
-                <input type="checkbox" id="switch-led">
-                <b onchange="process_led()" id="display_led">--</b>
+                <input onchange="process_led()" type="checkbox" id="switch-led">
                 </div>
               </div>
             </div>
