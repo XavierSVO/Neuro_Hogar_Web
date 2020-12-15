@@ -260,7 +260,7 @@ $matches = implode(',', $array);
                 </div>
                 <div>
                 <input type="checkbox" id="switch-led">
-                <b id="display_led">--</b>
+                <b onchange="process_led()" id="display_led">--</b>
                 </div>
               </div>
             </div>
@@ -528,20 +528,6 @@ class="p-a col-sm-6 lter">
 
 // }
 
-// function process_led1(){
-//   if ($('#input_led1').is(":checked")){
-//     console.log("Encendido");
-
-//     client.publish('led1', 'on', (error) => {
-//       console.log(error || 'Mensaje enviado!!!')
-//     })
-//   }else{
-//     console.log("Apagado");
-//     client.publish('led1', 'off', (error) => {
-//       console.log(error || 'Mensaje enviado!!!')
-//     })
-//   }
-// }
 
 // function process_led2(){
 //   if ($('#input_led2').is(":checked")){
@@ -649,22 +635,37 @@ client.on('connect', function () {
 })
 client.on('message', function (topic, message) {
   // message is Buffer
-  console.log(message.toString())
-  $('#display_led').html(message.toString())
-  var isChecked = document.getElementById('switch-led').checked;
-  if(isChecked){
-    client.publish('testtopic','1',(error)=>{  
-    console.log('Error'||'Mensaje enviado por mqtt');
-    })
-  }
-  else
-  {
-    client.publish('testtopic','0',(error)=>{  
-    console.log('Error'||'Mensaje enviado por mqtt');
-    })
-  }
+  // console.log(message.toString())
+  // $('#display_led').html(message.toString())
+  // var isChecked = document.getElementById('switch-led').checked;
+  // if(isChecked){
+  //   client.publish('testtopic','1',(error)=>{  
+  //   console.log('Error'||'Mensaje enviado por mqtt');
+  //   })
+  // }
+  // else
+  // {
+  //   client.publish('testtopic','0',(error)=>{  
+  //   console.log('Error'||'Mensaje enviado por mqtt');
+  //   })
+  // }
   
 })
+
+function process_led(){
+  if ($('#display_led').is(":checked")){
+    console.log("Encendido");
+
+    client.publish('testtopic', '1', (error) => {
+      console.log(error || 'Mensaje enviado!!!')
+    })
+  }else{
+    console.log("Apagado");
+    client.publish('testtopic', '0', (error) => {
+      console.log(error || 'Mensaje enviado!!!')
+    })
+  }
+}
   
 
 </script>
