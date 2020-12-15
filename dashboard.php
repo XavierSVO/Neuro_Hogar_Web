@@ -259,7 +259,7 @@ $matches = implode(',', $array);
                   <small class="text-muted">Promedio: 17 C</small>
                 </div>
                 <div>
-                <input onchange="process_led()" type="checkbox" id="switch-led">
+                <input onclick="process_led()" type="checkbox" id="switch-led">
                 </div>
               </div>
             </div>
@@ -612,12 +612,12 @@ class="p-a col-sm-6 lter">
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
 <script>
-  $('#display_led').html("Funciona")
+
+$('#display_led').html("Funciona")
+
 var client  = mqtt.connect("ws://142.44.247.98:8083/mqtt")
 //Si se conecta
 client.on('connect', function () {
-
- 
   
   client.publish('testtopic','hello via publicacion',(error)=>{  
     console.log('Error'||'Mensaje enviado por mqtt');
@@ -652,18 +652,28 @@ client.on('message', function (topic, message) {
 })
 
 function process_led(){
+
   var isChecked = document.getElementById('switch-led').checked;
+  
   if(isChecked){
+    
     client.publish('testtopic','1',(error)=>{  
+    
     console.log('Error'||'Mensaje enviado por mqtt');
+    
     })
   }
+  
   else
   {
+    
     client.publish('testtopic','0',(error)=>{  
+    
     console.log('Error'||'Mensaje enviado por mqtt');
+    
     })
   }
+
 }
   
 
