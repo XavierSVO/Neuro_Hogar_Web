@@ -653,7 +653,7 @@ client.on('message', function (topic, message) {
 })
 
 function process_led(){
-  if ($('#display_led').is(":checked")){
+  if ($('#switch-led').is(":checked")){
     console.log("Encendido");
 
     client.publish('testtopic', '1', (error) => {
